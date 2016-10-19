@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
 import CommentsApi from '../CommentsApi';
@@ -9,7 +9,6 @@ import './CommentBox.css';
 var CommentBox = React.createClass({
   propTypes: {
     commentList: React.PropTypes.instanceOf(Array).isRequired,
-    onSetComments: React.PropTypes.func.isRequired,
     commentsApi: React.PropTypes.instanceOf(CommentsApi).isRequired,
   },
   loadCommentsFromServer: function() {
@@ -38,7 +37,7 @@ var CommentBox = React.createClass({
 CommentBox = connect(
   (state) => {
     return {
-      commentList: state
+      commentList: state.comments
     };
   },
   (dispatch, ownProps) => {
